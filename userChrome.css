@@ -1,0 +1,228 @@
+/* ZEN BUT NOT
+ * repo: https:github.com/yihao03/FireZen
+ * heavily inspired by: https://github.com/lr-tech/OnelineProton/                  
+ */
+
+
+/* S E T T I N G S */
+
+:root {
+  --navbarWidth     : 293px; /* Set width of navbar. Use px for a fixed width 
+                                or vw for a percentage of your window. */
+  --animationSpeed  : 0.3s;
+  --tab-min-height: 28px !important;
+	--tab-max-height: 28px !important;
+}
+
+
+/* H I D I N G   E L E M E N T S */
+/* Comment or uncomment depending of what elements you want to hide */
+
+/* Back button */
+#back-button { display: none !important }
+
+/* Hide back button only when disabled */
+/* #back-button[disabled="true"] { display: none !important } */
+
+/* Forward button */
+#forward-button { display: none !important }
+
+/* Hide forward button only when disabled */
+/* #forward-button[disabled="true"] { display: none !important } */
+
+/* "Shield" icon */
+#tracking-protection-icon-container { display: none !important }
+
+/* Site information button */
+/* #identity-box { display: none !important } */
+
+/* This is the "Search with" indicator on the urlbar */
+#urlbar-search-mode-indicator { display: none !important }
+
+/* Zoom button */
+/* #urlbar-zoom-button { display: none !important } */
+
+/* Page action (right three dash button) */
+#pageActionButton { display: none !important }
+
+/* These are the buttons on the right of the urlbar */
+/* #page-action-buttons { display: none !important } */
+
+/* #urlbar-label-box { display: none !important } */
+
+/* This one is the hamburger menu! */
+/* CAUTION: if you hide this some popups may be bugged */
+/* #PanelUI-button { display: none !important } */
+
+/* Tab close button */
+.tab-close-button { display: none !important }
+
+/* Enable this to show the tab close button when hovering the tab */
+.tabbrowser-tab:hover .tab-close-button { display: -moz-inline-box !important }
+
+/*============================================================================*/
+
+
+/* Oneline tweak */
+
+#TabsToolbar {
+  margin-left : calc(var(--navbarWidth) + 32px) !important;
+}
+
+#nav-bar {
+  margin-right: calc(100vw - var(--navbarWidth) + 4px) !important;
+}
+
+#nav-bar:focus {
+  width: 100vw !important;
+}
+#urlbar-container {
+  margin-right:0.25vw;
+  min-width   : 0px !important;
+  width: 100% !important;
+}
+
+:root[uidensity="compact"] #nav-bar {
+  margin-top  : -36px !important;
+  height      : 37px !important;
+}
+
+:root:not([uidensity="compact"]):not([uidensity="touch"]) #nav-bar {
+  margin-top  : -44px !important;
+  height      : 44px !important;
+}
+
+:root[uidensity="touch"] #nav-bar {
+  margin-top  : -49px !important;
+  height      : 49px !important;
+}
+
+
+/* Dragging space */
+:root[sizemode="maximized"] #TabsToolbar {
+  margin-top: 1px;
+}
+
+#TabsToolbar {
+  margin-top: 5px;
+}
+
+
+/* Simplifying interface */
+
+#nav-bar {
+  background  : none !important;
+  box-shadow  : none !important;
+}
+
+#navigator-toolbox {
+  border      : none !important;
+}
+
+.titlebar-spacer {
+  display     : none !important;
+}
+
+
+/* Hide urlbar elements when not active */
+
+.urlbar-icon, #userContext-indicator, #userContext-label {
+  fill        : transparent !important;
+  background  : transparent !important;
+  color       : transparent !important;
+}
+
+#urlbar:hover .urlbar-icon,
+#urlbar:active .urlbar-icon, 
+#urlbar[focused] .urlbar-icon {
+  fill        : var(--toolbar-color) !important;
+}
+
+/* #urlbar:focus-within {
+  width: 99.5vw !important;
+} */
+
+#PanelUI-button {
+  display: none !important;
+}
+
+#nav-bar-overflow-button { 
+  position: relative;
+  inset: 0px 0px 0px 40px !important;
+  z-index: 1000;
+}
+
+.titlebar-buttonbox-container {
+    opacity: 0; /* Fully transparent */
+    visibility: hidden; /* Prevent interaction when hidden */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+}
+
+
+#navigator-toolbox:hover .titlebar-buttonbox-container {
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Allow interaction */
+}
+
+/* Change the background and text color of the selected tab */
+.tabbrowser-tab[selected=true] .tab-background{
+    background-color: #3b304d !important;
+    color: white !important; /* White text */
+    font-weight: bold; /* Optional: Make text bold */
+}
+
+.tabbrowser-tab .tab-content{
+  font: lighter !important;
+  opacity: 0.8;
+}
+
+/* #urlbar[breakout][breakout-extend] {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-top: -3px !important;'
+} */
+
+#urlbar[breakout][breakout-extend] {
+    width: 60vw !important; /* Adjust width as needed */
+    max-width: 60vw !important;
+    left: 20% !important;
+    top: 150px !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow */
+    border-radius: 8px !important; /* Smooth rounded corners */
+  
+  
+  /* Fade in effect */
+  opacity: 0; 
+  animation: fadeIn 0.2s forwards !important;
+}
+
+
+/* Keyframes for fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+/* animations */
+.subviewbutton,
+#urlbar-background,
+.urlbar-icon,
+#userContext-indicator,
+#userContext-label,
+.urlbar-input-box, 
+#identity-box,
+#tracking-protection-icon-container,
+[anonid=urlbar-go-button],
+.urlbar-icon-wrapper,
+#tracking-protection-icon,
+#identity-box image,
+stack,
+tab:not(:active) .tab-background,
+tab:not([beforeselected-visible])::after,
+tab[visuallyselected] .tab-background::before,
+tab[visuallyselected] .tab-background::before,
+.tab-close-button {
+  transition  : var(--animationSpeed) !important;
+}
